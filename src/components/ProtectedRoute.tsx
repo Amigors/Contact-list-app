@@ -1,11 +1,11 @@
 import {Navigate, Outlet} from 'react-router-dom';
 
-export type ProtectedRouteProps = {
+type TProtectedRouteProps = {
   isAuthenticated: boolean;
   authenticationPath: string;
   outlet: JSX.Element;
 };
-export default function ProtectedRoute({isAuthenticated, authenticationPath, outlet}: ProtectedRouteProps) {
+export default function ProtectedRoute({isAuthenticated, authenticationPath, outlet}: TProtectedRouteProps) {
   if (isAuthenticated) {
     return outlet;
   } else {
