@@ -1,16 +1,20 @@
 import Table from 'react-bootstrap/Table';
 import Button from 'react-bootstrap/Button';
+import {useEffect, useState} from 'react';
 
 //TODO: добавлять/удалять/редактировать/поиск
-
 //
 const Contacts = () => {
-  const collect = [
-    {firstName: 'OTTO', id: 0},
-    {firstName: 'Jacob', id: 1},
-  ];
-  const res = fetch('/posts').then(response => response.json());
-  console.log(res);
+  const [collect, setCollect] = useState([]);
+  useEffect(() => {
+    const fetchPost = async () => {
+      const res = (await fetch('http://localhost:3000/posts').then(data => console.log(data))) as any;
+      console.log(res);
+      setCollect(res);
+      return res;
+    };
+  }, []);
+
   return (
     <Table striped bordered hover variant="dark">
       <thead>
@@ -23,8 +27,8 @@ const Contacts = () => {
       <tbody>
         {collect.map(item => (
           <tr>
-            <td>{item.id}</td>
-            <td>{item.firstName}</td>
+            <td>{item?.id}</td>
+            <td>{item?.firstName}</td>
             <td>
               <Button variant="primary">Добавить</Button>
             </td>
