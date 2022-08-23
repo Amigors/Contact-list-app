@@ -1,6 +1,7 @@
+import {useRef, useState} from 'react';
 import axios from 'axios';
-import {useState} from 'react';
 import {Button, Form} from 'react-bootstrap';
+import {toast} from 'react-toastify';
 import {TContact} from '../custom-types';
 
 type TPageContact = {
@@ -8,8 +9,35 @@ type TPageContact = {
   setCollect: React.Dispatch<React.SetStateAction<TContact[]>>;
   collect: TContact[];
 };
+
 const Contact = ({item, setCollect, collect}: TPageContact) => {
   const [edit, setEdit] = useState(false);
+  const editName = useRef<HTMLInputElement>(null);
+
+  const editContact = async () => {
+    if (!editName.current) {
+      return;
+    }
+    await axios.put('http://localhost:3000/contacts/' + item.id, {title: editName.current.value});
+    toast.success('Отредактировано');
+
+    const objIndex = collect.findIndex(obj => obj.id === item.id);
+    if (objIndex === -1) {
+      return;
+    }
+    const updatedObj = {...collect[objIndex], title: editName.current.value};
+    const updatedCollect = [...collect.slice(0, objIndex), updatedObj, ...collect.slice(objIndex + 1)];
+    setCollect(updatedCollect);
+
+    setEdit(false);
+  };
+
+  const deleteContact = async () => {
+    await axios.delete('http://localhost:3000/contacts/' + item.id);
+    const newCollect = collect.filter((elem: {id: number}) => elem.id !== item.id);
+    setCollect(newCollect);
+  };
+
   return (
     <tr key={item.id}>
       <td>{item.id}</td>
@@ -18,14 +46,8 @@ const Contact = ({item, setCollect, collect}: TPageContact) => {
           item.title
         ) : (
           <>
-            <Form.Control type="text" id="editName" defaultValue={item.title} />
-            <Button
-              variant="success"
-              onClick={() => {
-                axios.put('http://localhost:3000/contacts/' + item.id, {title: editName.value});
-                setEdit(false);
-              }}
-            >
+            <Form.Control type="text" ref={editName} defaultValue={item.title} />
+            <Button variant="success" onClick={editContact}>
               Принять
             </Button>
           </>
@@ -35,21 +57,14 @@ const Contact = ({item, setCollect, collect}: TPageContact) => {
         <Button
           variant="info"
           onClick={() => {
-            setEdit(true);
+            setEdit(prevState => !prevState);
           }}
         >
           Редактировать
         </Button>
       </td>
       <td>
-        <Button
-          variant="danger"
-          onClick={() => {
-            axios.delete('http://localhost:3000/contacts/' + item.id);
-            const newCollect = collect.filter((elem: {id: number}) => elem.id !== item.id);
-            setCollect(newCollect);
-          }}
-        >
+        <Button variant="danger" onClick={deleteContact}>
           Удалить
         </Button>
       </td>

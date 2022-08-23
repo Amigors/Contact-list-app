@@ -1,36 +1,57 @@
 import axios from 'axios';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
+import {useForm, Controller, SubmitHandler} from 'react-hook-form';
+import {toast} from 'react-toastify';
+
+// примеры
+// {email olivier@mail.com" , password: bestPassw0rd}
+// {email typycode@bk.ru" , password: typycode}
+// {email plmx_help@x5.ru" , password: sssssss}
+
+type TLogin = {
+  email: string;
+  password: string;
+};
 
 const Login = () => {
+  const {control, handleSubmit} = useForm<TLogin>();
+  const SubmitForm: SubmitHandler<TLogin> = async (data: TLogin) => {
+    try {
+      await axios.post('http://localhost:3000/login', data);
+      toast.success('Все ок, заходи');
+      //TODO: redirect to contact
+    } catch (error) {
+      toast.error('Неверные данные');
+      console.log(error);
+    }
+  };
+
   return (
-    <Form>
+    <Form onSubmit={handleSubmit(SubmitForm)}>
       <Form.Group className="mb-3" controlId="formBasicEmail">
-        <Form.Label>Email address</Form.Label>
-        <Form.Control type="email" placeholder="Enter email" />
-        <Form.Text className="text-muted">We'll never share your email with anyone else.</Form.Text>
+        <Form.Label>Логин</Form.Label>
+
+        <Controller
+          render={({field}) => <Form.Control type="email" placeholder="Введите email" {...field} />}
+          name="email"
+          control={control}
+          defaultValue=""
+        />
       </Form.Group>
 
       <Form.Group className="mb-3" controlId="formBasicPassword">
-        <Form.Label>Password</Form.Label>
-        <Form.Control type="password" placeholder="Password" />
+        <Form.Label>Пароль</Form.Label>
+        <Controller
+          render={({field}) => <Form.Control type="password" placeholder="Пароль" {...field} />}
+          name="password"
+          control={control}
+          defaultValue=""
+        />
       </Form.Group>
-      <Form.Group className="mb-3" controlId="formBasicCheckbox">
-        <Form.Check type="checkbox" label="Check me out" />
-      </Form.Group>
-      <Button
-        variant="primary"
-        type="submit"
-        onClick={e => {
-          e.preventDefault();
-          const fetchProfile = async () => {
-            const result = await axios('http://localhost:3000/profile');
-            console.log(result.data.profile);
-          };
-          fetchProfile();
-        }}
-      >
-        Submit
+
+      <Button variant="primary" type="submit">
+        Войти
       </Button>
     </Form>
   );

@@ -8,18 +8,26 @@ import Contacts from './routes/Contacts';
 import Login from './routes/Login';
 import NotFound from './routes/NotFound';
 
+import {ToastContainer} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import {Provider} from 'react-redux';
+import {store} from './app/store';
+
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<App />} />
-        <Route path="login" element={<Login />} />
-        <Route
-          path="contacts"
-          element={<ProtectedRoute isAuthenticated={true} authenticationPath="/login" outlet={<Contacts />} />}
-        />
-        <Route path="*" element={<NotFound />} />
-      </Routes>
-    </BrowserRouter>
+    <Provider store={store}>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<App />} />
+          <Route path="login" element={<Login />} />
+          <Route
+            path="contacts"
+            element={<ProtectedRoute isAuthenticated={true} authenticationPath="/login" outlet={<Contacts />} />}
+          />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </BrowserRouter>
+      <ToastContainer />
+    </Provider>
   </React.StrictMode>
 );

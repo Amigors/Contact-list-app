@@ -1,28 +1,24 @@
 {
   "contacts": [
     {
-      "id": 1,
-      "title": "json-server",
-      "author": "typicode"
+      "title": "json-serverssss1",
+      "id": 1
     },
     {
       "id": 2,
-      "title": "react",
-      "author": "typicode"
+      "title": "react"
     },
     {
       "id": 3,
-      "title": "axios",
-      "author": "typicode"
+      "title": "axios"
     },
     {
-      "title": "domik",
+      "title": "domiki",
       "id": 4
     },
     {
       "id": 5,
-      "title": "bootstrap",
-      "author": "typicode"
+      "title": "bootstrap"
     },
     {
       "title": "dfgs",
@@ -31,24 +27,40 @@
     {
       "title": "sfdg",
       "id": 7
+    },
+    {
+      "title": "VASILIY",
+      "id": 8
+    },
+    {
+      "title": "sssss",
+      "id": 9
+    },
+    {
+      "title": "ttt",
+      "id": 10
     }
   ],
-  "profile": [
+  "users": [
     {
-    "email": "typicode@bk.ru",
-    "password": "pass1"
+      "email": "plmx_help@x5.ru",
+      "password": "$2a$10$aGzvDNf.0IaghRu3JMyeB.dWqSxEErSGlhJpZFRMCCpZzTp0r9IbW",
+      "id": 6
     },
     {
-    "email": "zxc@bk.ru",
-    "password": "pass2"
+      "email": "typycode@bk.ru",
+      "password": "$2a$10$4fVvOMeQLSEqp9KAdj1mxuO3qsQkRSLxuRuBXZ6rbSFAcAVt6zbXC",
+      "id": 7
     },
     {
-    "email": "abc@bk.ru",
-    "password": "pass1"
+      "email": "olivier@mail.com",
+      "password": "$2a$10$/uGqixhI3bB1..as0bhWk..9HEyIuMYMenkJoteVvhKrrFKe4G.Vu",
+      "id": 8
     },
     {
-    "email": "qwe@bk.ru",
-    "password": "pass3"
+      "email": "plmx_help@x5.ru",
+      "password": "sssssss",
+      "id": 9
     }
-]
+  ]
 }
