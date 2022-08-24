@@ -10,7 +10,6 @@ const Contacts = () => {
   const [collect, setCollect] = useState<TContact[]>([]);
   const [tempCollect, setTempCollect] = useState<TContact[]>([]);
   const newName = useRef<HTMLInputElement>(null);
-  //TODO: useRef прочитать
 
   useEffect(() => {
     const fetchContacts = async () => {

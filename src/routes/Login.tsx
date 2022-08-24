@@ -2,7 +2,10 @@ import axios from 'axios';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import {useForm, Controller, SubmitHandler} from 'react-hook-form';
+import {Navigate, Route, useNavigate} from 'react-router';
+import {BrowserRouter} from 'react-router-dom';
 import {toast} from 'react-toastify';
+import Contacts from './Contacts';
 
 // примеры
 // {email olivier@mail.com" , password: bestPassw0rd}
@@ -16,11 +19,12 @@ type TLogin = {
 
 const Login = () => {
   const {control, handleSubmit} = useForm<TLogin>();
+  const navigate = useNavigate();
   const SubmitForm: SubmitHandler<TLogin> = async (data: TLogin) => {
     try {
       await axios.post('http://localhost:3000/login', data);
       toast.success('Все ок, заходи');
-      //TODO: redirect to contact
+      navigate('/contacts');
     } catch (error) {
       toast.error('Неверные данные');
       console.log(error);
