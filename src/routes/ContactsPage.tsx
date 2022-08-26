@@ -1,43 +1,37 @@
 import {useEffect, useRef, useState} from 'react';
-import axios from 'axios';
 import Table from 'react-bootstrap/Table';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Contact from '../components/Contact';
+import Spinner from 'react-bootstrap/Spinner';
 import {TContact} from '../custom-types';
+import {contactsApi, useGetContactsQuery} from '../services/querys';
 
-const Contacts = () => {
+const ContactsPage = () => {
   const [collect, setCollect] = useState<TContact[]>([]);
   const [tempCollect, setTempCollect] = useState<TContact[]>([]);
   const newName = useRef<HTMLInputElement>(null);
+  const {data: contacts, isLoading} = contactsApi.useGetContactsQuery('');
+  const [createContact, {}] = contactsApi.useCreateContactMutation();
+  const [getContact, {}] = contactsApi.useGetContactsMutation();
+  //
 
-  useEffect(() => {
-    const fetchContacts = async () => {
-      const result = await axios('http://localhost:3000/contacts');
-
-      setCollect(result.data);
-      setTempCollect(result.data);
-    };
-
-    fetchContacts();
-  }, []);
-
-  const AddContact = async () => {
+  const AddContact = () => {
     if (!newName.current) {
       return;
     }
-    const res = await axios.post('http://localhost:3000/contacts', {title: newName.current.value});
-    const newContact = res.data;
-    setCollect(prevCollect => [...prevCollect, newContact]);
-
+    createContact({title: newName.current.value});
     newName.current.value = '';
   };
 
   const SearchContact = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const findCollect = tempCollect.filter(elem => elem.title.includes(e.target.value));
-    setCollect(findCollect);
+    getContact(e.target.value);
+    // const findCollect = tempCollect.filter(elem => elem.title.includes(e.target.value));
+    // setCollect(findCollect);
   };
-
+  if (isLoading) {
+    return <Spinner animation="grow" variant="primary" />;
+  }
   return (
     <div
       style={{
@@ -58,8 +52,8 @@ const Contacts = () => {
           </tr>
         </thead>
         <tbody>
-          {collect?.map((item: TContact) => {
-            return <Contact collect={collect} setCollect={setCollect} item={item} key={item.id} />;
+          {contacts?.map((item: TContact) => {
+            return <Contact item={item} key={item.id} />;
           })}
         </tbody>
       </Table>
@@ -79,4 +73,13 @@ const Contacts = () => {
   );
 };
 
-export default Contacts;
+export default ContactsPage;
+
+// useEffect(() => {
+//   const fetchContacts = async () => {
+//     // const result = await axios('http://localhost:3000/contacts');
+//     dispatch(setContactsList(result.data));
+//     // setCollect(result.data);
+//     // setTempCollect(result.data);
+
+// }, []);

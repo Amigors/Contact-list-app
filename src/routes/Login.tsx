@@ -5,7 +5,7 @@ import {useForm, Controller, SubmitHandler} from 'react-hook-form';
 import {Navigate, Route, useNavigate} from 'react-router';
 import {BrowserRouter} from 'react-router-dom';
 import {toast} from 'react-toastify';
-import Contacts from './Contacts';
+import Contacts from './ContactsPage';
 
 // примеры
 // {email olivier@mail.com" , password: bestPassw0rd}

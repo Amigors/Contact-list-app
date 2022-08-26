@@ -4,7 +4,7 @@ import {BrowserRouter, Routes, Route} from 'react-router-dom';
 import App from './App';
 import ProtectedRoute from './components/ProtectedRoute';
 import './index.css';
-import Contacts from './routes/Contacts';
+import Contacts from './routes/ContactsPage';
 import Login from './routes/Login';
 import NotFound from './routes/NotFound';
 
