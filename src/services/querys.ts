@@ -8,10 +8,12 @@ export const contactsApi = createApi({
   baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:3000/' }),
   tagTypes: ['Contacts'],
   endpoints: (builder) => ({
-    getContacts: builder.query<TContact, string>({
-      query: (q) => ({
+    getContacts: builder.query<TContact[], string>({
+      query: (search: string) => ({
         url: 'contacts',
-        params: {q}
+        params: {
+          q: search,
+        }
     }),   
     providesTags: result => ['Contacts']
     }),

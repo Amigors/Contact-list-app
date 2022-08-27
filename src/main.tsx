@@ -22,7 +22,7 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
           <Route path="login" element={<Login />} />
           <Route
             path="contacts"
-            element={<ProtectedRoute isAuthenticated={true} authenticationPath="/login" outlet={<Contacts />} />}
+            element={<ProtectedRoute isAuthenticated={false} authenticationPath="/login" outlet={<Contacts />} />}
           />
           <Route path="*" element={<NotFound />} />
         </Routes>

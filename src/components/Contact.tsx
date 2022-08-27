@@ -11,8 +11,8 @@ type TPageContact = {
 const Contact = ({item}: TPageContact) => {
   const [edit, setEdit] = useState(false);
   const editName = useRef<HTMLInputElement>(null);
-  const [removeContact, {}] = contactsApi.useRemoveContactMutation();
-  const [updateContact, {}] = contactsApi.useUpdateContactMutation();
+  const [removeContact] = contactsApi.useRemoveContactMutation();
+  const [updateContact] = contactsApi.useUpdateContactMutation();
 
   const editContact = async () => {
     if (!editName.current) {
