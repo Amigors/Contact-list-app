@@ -1,8 +1,7 @@
 import axios from 'axios';
-import Button from 'react-bootstrap/Button';
-import Form from 'react-bootstrap/Form';
-import {useForm, Controller, SubmitHandler} from 'react-hook-form';
 import {useNavigate} from 'react-router';
+import {Form, Button} from 'react-bootstrap';
+import {useForm, Controller, SubmitHandler} from 'react-hook-form';
 import {toast} from 'react-toastify';
 
 type TLogin = {
@@ -10,8 +9,7 @@ type TLogin = {
   password: string;
 };
 
-const Login = () => {
-  localStorage.clear();
+const LoginPage = () => {
   const {control, handleSubmit} = useForm<TLogin>();
   const navigate = useNavigate();
   const SubmitForm: SubmitHandler<TLogin> = async (data: TLogin) => {
@@ -22,7 +20,6 @@ const Login = () => {
       navigate('/contacts');
     } catch (error) {
       toast.error('Неверные данные');
-      console.log(error);
     }
   };
 
@@ -58,4 +55,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default LoginPage;

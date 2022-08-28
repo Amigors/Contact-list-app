@@ -2,7 +2,7 @@ import {useRef, useState} from 'react';
 import {Button, Form} from 'react-bootstrap';
 import {toast} from 'react-toastify';
 import {TContact} from '../custom-types';
-import {contactsApi} from '../services/querys';
+import {contactsApi} from '../app/querys';
 
 type TPageContact = {
   item: TContact;

@@ -1,12 +1,9 @@
 import {useRef, useState} from 'react';
-import Table from 'react-bootstrap/Table';
-import Button from 'react-bootstrap/Button';
-import Form from 'react-bootstrap/Form';
-import Contact from '../components/Contact';
-import Spinner from 'react-bootstrap/Spinner';
-import {TContact} from '../custom-types';
-import {contactsApi} from '../services/querys';
 import {useNavigate} from 'react-router';
+import {Spinner, Form, Button, Table} from 'react-bootstrap';
+import Contact from '../components/Contact';
+import {TContact} from '../custom-types';
+import {contactsApi} from '../app/querys';
 
 const ContactsPage = () => {
   const newName = useRef<HTMLInputElement>(null);
@@ -33,6 +30,9 @@ const ContactsPage = () => {
   };
   if (isLoading) {
     return <Spinner animation="grow" variant="primary" />;
+  }
+  if (!contacts) {
+    return null;
   }
   return (
     <div

@@ -20,9 +20,6 @@ export const contactsSlice = createSlice({
     setContactsList: (state, action: PayloadAction<[]>) => {
         state.list = [...action.payload]
       },
-    addContact: (state, action: PayloadAction<[]>) => {
-       state.list.push(...action.payload)
-    },
     removeContact: (state) => {
         state.list.pop()
     },

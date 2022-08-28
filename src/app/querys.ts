@@ -1,4 +1,4 @@
-import { TContact } from './../custom-types';
+import { TContact } from '../custom-types';
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 
 export const contactsApi = createApi({
@@ -15,7 +15,7 @@ export const contactsApi = createApi({
     }),   
     providesTags: () => ['Contacts']
     }),
-    createContact: builder.mutation<TContact, TContact>({
+    createContact: builder.mutation<TContact, {title: string}>({
        query: (contact: {title: string}) =>({
         url:`contacts`,
         method: 'POST',
@@ -23,7 +23,7 @@ export const contactsApi = createApi({
        }),
        invalidatesTags: ['Contacts']
     }),
-    removeContact: builder.mutation<TContact, TContact>({
+    removeContact: builder.mutation<TContact, number>({
        query: (id) =>({
         url:`contacts/${id}`,
         method: 'DELETE',

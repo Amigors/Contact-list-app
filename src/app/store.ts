@@ -1,8 +1,8 @@
 import { configureStore } from '@reduxjs/toolkit'
-import {contactsReducer} from '../features/contacts/contactsSlice';
-import {userReducer} from '../features/users/userSlice';
+import {contactsReducer} from '../slices/contacts/contactsSlice';
+import {userReducer} from '../slices/users/userSlice';
 import { setupListeners } from '@reduxjs/toolkit/query'
-import { contactsApi } from '../services/querys'
+import { contactsApi } from './querys'
 
 export const store = configureStore({
   reducer: {

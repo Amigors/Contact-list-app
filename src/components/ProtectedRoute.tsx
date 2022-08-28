@@ -1,9 +1,12 @@
 import {Navigate} from 'react-router-dom';
-import {TProtectedRouteProps} from '../custom-types';
+
+type TProtectedRouteProps = {
+  authenticationPath: string;
+  outlet: JSX.Element;
+};
 
 export default function ProtectedRoute({authenticationPath, outlet}: TProtectedRouteProps) {
   const auth = localStorage.getItem('Token');
-  console.log(auth);
   if (auth) {
     return outlet;
   } else {

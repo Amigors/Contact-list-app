@@ -31,11 +31,13 @@
 
 #### Структура проекта
 
-- app - store, hooks, fetching
-- store - хранилище проекта
-- hooks - кастомные хуки
-- fetching - запрос контактов из бд
-- mock - моковые данные(тестовые)
-- routes - protected route и страница 404
+- app
+  - store - хранилище проекта
+  - fetching - запрос контактов из бд
+  - querys - запросы для работы с данными
+- mock - моковые данные(тестовые логины и пароли)
+- routes
+  - Contact
+  - Login
+  - Not Found (404)
 - components - основные компоненты
-- services/querys - запросы для работы с данными
