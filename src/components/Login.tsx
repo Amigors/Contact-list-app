@@ -5,11 +5,6 @@ import {useForm, Controller, SubmitHandler} from 'react-hook-form';
 import {useNavigate} from 'react-router';
 import {toast} from 'react-toastify';
 
-// примеры
-// {email olivier@mail.com" , password: bestPassw0rd}
-// {email typycode@bk.ru" , password: typycode}
-// {email plmx_help@x5.ru" , password: sssssss}
-
 type TLogin = {
   email: string;
   password: string;
