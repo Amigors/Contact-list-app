@@ -1,5 +1,10 @@
 export type TContact = {
     id: number;
     title: string;
-    author: string;
+};
+
+export type TProtectedRouteProps = {
+    isAuthenticated: boolean;
+    authenticationPath: string;
+    outlet: JSX.Element;
 };

@@ -1,8 +1,6 @@
 import { TContact } from './../custom-types';
-// Need to use the React-specific entry point to import createApi
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 
-// Define a service using a base URL and expected endpoints
 export const contactsApi = createApi({
   reducerPath: 'contactsApi',
   baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:3000/' }),
@@ -15,7 +13,7 @@ export const contactsApi = createApi({
           q: search,
         }
     }),   
-    providesTags: result => ['Contacts']
+    providesTags: () => ['Contacts']
     }),
     createContact: builder.mutation<TContact, TContact>({
        query: (contact: {title: string}) =>({
@@ -43,6 +41,4 @@ export const contactsApi = createApi({
 })
 })
 
-// Export hooks for usage in functional components, which are
-// auto-generated based on the defined endpoints
 export const { useGetContactsQuery } = contactsApi

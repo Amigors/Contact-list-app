@@ -2,10 +2,10 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
 import App from './App';
-import ProtectedRoute from './components/ProtectedRoute';
+import ProtectedRoute from './routes/ProtectedRoute';
 import './index.css';
-import Contacts from './routes/ContactsPage';
-import Login from './routes/Login';
+import Contacts from './components/ContactsPage';
+import Login from './components/Login';
 import NotFound from './routes/NotFound';
 
 import {ToastContainer} from 'react-toastify';

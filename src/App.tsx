@@ -10,7 +10,7 @@ function App() {
           paddingBottom: '1rem',
         }}
       >
-        <Link to="/login">Login</Link> | <Link to="/contacts">Contacts</Link>
+        <Link to="/login">Login</Link>
       </nav>
     </div>
   );

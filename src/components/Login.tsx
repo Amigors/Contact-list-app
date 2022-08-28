@@ -2,10 +2,8 @@ import axios from 'axios';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import {useForm, Controller, SubmitHandler} from 'react-hook-form';
-import {useDispatch} from 'react-redux';
 import {useNavigate} from 'react-router';
 import {toast} from 'react-toastify';
-import {setUser, userSlice} from '../features/users/userSlice';
 
 // примеры
 // {email olivier@mail.com" , password: bestPassw0rd}
@@ -18,8 +16,8 @@ type TLogin = {
 };
 
 const Login = () => {
+  localStorage.clear();
   const {control, handleSubmit} = useForm<TLogin>();
-  const dispatch = useDispatch();
   const navigate = useNavigate();
   const SubmitForm: SubmitHandler<TLogin> = async (data: TLogin) => {
     try {

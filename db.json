@@ -1,92 +1,12 @@
 {
   "contacts": [
     {
-      "title": "json-serverssss1",
+      "title": "json-server",
       "id": 1
     },
     {
-      "id": 2,
-      "title": "react"
-    },
-    {
-      "id": 3,
-      "title": "axiosadfa"
-    },
-    {
-      "title": "domiki",
-      "id": 4
-    },
-    {
-      "id": 5,
-      "title": "bootstrap"
-    },
-    {
-      "title": "sssss",
-      "id": 9
-    },
-    {
-      "title": "ttt",
-      "id": 10
-    },
-    {
-      "id": 11,
-      "title": "qwe56assdf"
-    },
-    {
-      "title": "sga",
-      "id": 13
-    },
-    {
-      "title": "dsfa",
-      "id": 14
-    },
-    {
-      "title": "fad",
-      "id": 15
-    },
-    {
-      "title": "adsf",
-      "id": 16
-    },
-    {
-      "title": "asdf",
-      "id": 17
-    },
-    {
-      "title": "aaa",
-      "id": 18
-    },
-    {
-      "title": "qqq",
-      "id": 19
-    },
-    {
-      "title": "ee",
-      "id": 20
-    },
-    {
-      "title": "yyy",
-      "id": 21
-    },
-    {
-      "title": "bc",
-      "id": 22
-    },
-    {
-      "title": "xcv",
-      "id": 23
-    },
-    {
-      "title": "adf",
-      "id": 24
-    },
-    {
-      "title": "fff",
-      "id": 25
-    },
-    {
-      "title": "reaccct",
-      "id": 26
+      "title": "react",
+      "id": 2
     }
   ],
   "users": [
