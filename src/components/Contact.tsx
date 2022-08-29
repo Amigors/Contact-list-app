@@ -14,7 +14,7 @@ const Contact = ({item}: TPageContact) => {
   const [removeContact] = contactsApi.useRemoveContactMutation();
   const [updateContact] = contactsApi.useUpdateContactMutation();
 
-  const editContact = async () => {
+  const editContact = () => {
     if (!editName.current) {
       return;
     }
@@ -23,7 +23,7 @@ const Contact = ({item}: TPageContact) => {
     setEdit(false);
   };
 
-  const deleteContact = async () => {
+  const deleteContact = () => {
     removeContact(item.id);
   };
 
