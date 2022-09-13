@@ -1,5 +1,4 @@
 import {useRef, useState} from 'react';
-import {useNavigate} from 'react-router';
 import {Spinner, Form, Button, Table} from 'react-bootstrap';
 import Contact from '../components/Contact';
 import {TContact} from '../custom-types';
@@ -7,15 +6,10 @@ import {contactsApi} from '../app/querys';
 
 const ContactsPage = () => {
   const newName = useRef<HTMLInputElement>(null);
-  const navigate = useNavigate();
   const [search, setSearch] = useState('');
+
   const {data: contacts, isLoading} = contactsApi.useGetContactsQuery(search);
   const [createContact] = contactsApi.useCreateContactMutation();
-
-  const LogOut = () => {
-    localStorage.setItem('Token', '');
-    navigate('/login');
-  };
 
   const AddContact = () => {
     if (!newName.current) {
@@ -41,7 +35,6 @@ const ContactsPage = () => {
         gap: '16px',
       }}
     >
-      <button onClick={LogOut}>Выход</button>
       <div>
         <Form.Label>Поиск</Form.Label>
         <Form.Control type="text" id="Search" onChange={SearchContact} />

@@ -23,24 +23,16 @@
   ],
   "users": [
     {
-      "email": "plmx_help@x5.ru",
-      "password": "$2a$10$aGzvDNf.0IaghRu3JMyeB.dWqSxEErSGlhJpZFRMCCpZzTp0r9IbW",
-      "id": 6
+      "email": "serlou@mail.ru",
+      "password": "$2a$10$umphTnMR4etBvcpC5l.KjeD7HJ1OvKD1g4I4wze4/AljrOVuLxUP2",
+      "username": "Amigors",
+      "id": 1
     },
     {
-      "email": "typycode@bk.ru",
-      "password": "$2a$10$4fVvOMeQLSEqp9KAdj1mxuO3qsQkRSLxuRuBXZ6rbSFAcAVt6zbXC",
-      "id": 7
-    },
-    {
-      "email": "olivier@mail.com",
-      "password": "$2a$10$/uGqixhI3bB1..as0bhWk..9HEyIuMYMenkJoteVvhKrrFKe4G.Vu",
-      "id": 8
-    },
-    {
-      "email": "plmx_help@x5.ru",
-      "password": "sssssss",
-      "id": 9
+      "email": "asdf@mail.ru",
+      "password": "$2a$10$3.il2gMnBOfL1XySa43zHeSDyrhGrDK2hf6Kh0Ho.t4KyxXUV4E8G",
+      "username": "Сергей",
+      "id": 2
     }
   ]
 }

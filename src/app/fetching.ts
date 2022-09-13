@@ -6,3 +6,4 @@ export const fetchContacts = () => async (dispatch: AppDispatch) => {
     const response = await axios('http://localhost:3000/contacts');
     dispatch(contactsSlice.actions.setContactsList(response.data))
 }
+

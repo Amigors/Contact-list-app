@@ -3,21 +3,31 @@ import {useNavigate} from 'react-router';
 import {Form, Button} from 'react-bootstrap';
 import {useForm, Controller, SubmitHandler} from 'react-hook-form';
 import {toast} from 'react-toastify';
+import {Link} from 'react-router-dom';
+import {useDispatch} from 'react-redux';
+import {loginSuccess} from '../slices/users/userSlice';
 
 type TLogin = {
   email: string;
+  username?: string;
   password: string;
 };
 
 const LoginPage = () => {
   const {control, handleSubmit} = useForm<TLogin>();
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const SubmitForm: SubmitHandler<TLogin> = async (data: TLogin) => {
     try {
       const result = await axios.post('http://localhost:3000/login', data);
-      localStorage.setItem('Token', result.data.accessToken);
       toast.success('Все ок, заходи');
       navigate('/contacts');
+      dispatch(
+        loginSuccess({
+          accessToken: result.data.accessToken,
+          email: data.user.email,
+        })
+      );
     } catch (error) {
       toast.error('Неверные данные');
     }
@@ -51,6 +61,7 @@ const LoginPage = () => {
           Войти
         </Button>
       </Form>
+      <Link to="/registration">У меня нет аккаунта, хочу создать</Link>
     </>
   );
 };
