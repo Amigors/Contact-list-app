@@ -7,21 +7,17 @@ import {Link} from 'react-router-dom';
 import {useDispatch} from 'react-redux';
 import {register} from '../slices/users/userSlice';
 
-type RLogin = {
+type TRegistration = {
   email: string;
   username: string;
   password: string;
 };
-interface IAuthResponse {
-  access: string;
-  refresh: string;
-}
 
 const RegisterPage = () => {
-  const {control, handleSubmit} = useForm<RLogin>();
+  const {control, handleSubmit} = useForm<TRegistration>();
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const SubmitForm: SubmitHandler<RLogin> = async (data: RLogin) => {
+  const SubmitForm: SubmitHandler<TRegistration> = async (data: TRegistration) => {
     try {
       const response = await axios.post(`http://localhost:3000/users`, data);
       console.log('username', data.username);
@@ -35,7 +31,7 @@ const RegisterPage = () => {
             email: data.email,
             id: response.data.id,
           },
-          isAuthenticated: false,
+          isAuthenticated: Boolean(response.data.access),
         })
       );
     } catch (e) {

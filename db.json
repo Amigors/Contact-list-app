@@ -33,6 +33,12 @@
       "password": "$2a$10$3.il2gMnBOfL1XySa43zHeSDyrhGrDK2hf6Kh0Ho.t4KyxXUV4E8G",
       "username": "Сергей",
       "id": 2
+    },
+    {
+      "email": "asdff@mail.ru",
+      "password": "$2a$10$XhgUuJbRPWx2yJdmUKiLhO.yYFPa8dM/Vj0WWWZGMai49RjV2Kupq",
+      "username": "S_E_R_G_A_N_T",
+      "id": 3
     }
   ]
 }

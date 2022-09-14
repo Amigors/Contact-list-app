@@ -1,6 +1,7 @@
 import {Button, Container, Navbar} from 'react-bootstrap';
 
 import SvgIcon, {SvgIconProps} from '@mui/material/SvgIcon';
+import {Outlet, useNavigate} from 'react-router';
 function HomeIcon(props: SvgIconProps) {
   return (
     <SvgIcon {...props}>
@@ -10,12 +11,14 @@ function HomeIcon(props: SvgIconProps) {
 }
 const Navigation = () => {
   const username = localStorage.getItem('dc-username');
-  const isAuthenticated = Boolean(localStorage.getItem('Token'));
+  const isAuthenticated = Boolean(localStorage.getItem('dc-access'));
+  const navigate = useNavigate();
   console.log('user', username);
   console.log('isauth', isAuthenticated);
 
   const LogOut = () => {
     localStorage.clear();
+    navigate('/login');
   };
 
   return (
@@ -44,6 +47,7 @@ const Navigation = () => {
           )}
         </Container>
       </Navbar>
+      <Outlet />
     </div>
   );
 };

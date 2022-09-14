@@ -6,7 +6,7 @@ type TProtectedRouteProps = {
 };
 
 export default function ProtectedRoute({authenticationPath, outlet}: TProtectedRouteProps) {
-  const auth = localStorage.getItem('Token');
+  const auth = localStorage.getItem('dc-access');
   if (auth) {
     return outlet;
   } else {

@@ -17,15 +17,22 @@ const LoginPage = () => {
   const {control, handleSubmit} = useForm<TLogin>();
   const navigate = useNavigate();
   const dispatch = useDispatch();
+
   const SubmitForm: SubmitHandler<TLogin> = async (data: TLogin) => {
     try {
       const result = await axios.post('http://localhost:3000/login', data);
       toast.success('Все ок, заходи');
+      console.log(result);
       navigate('/contacts');
       dispatch(
         loginSuccess({
           accessToken: result.data.accessToken,
-          email: data.user.email,
+          user: {
+            email: data.email,
+            username: result.data.username,
+            id: result.data.id,
+          },
+          isAuthenticated: Boolean(result.data.accessToken),
         })
       );
     } catch (error) {
