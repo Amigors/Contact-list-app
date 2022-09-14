@@ -1,5 +1,3 @@
-## Тестовое задание
-
 #### Описание проекта
 
 Записная книжка с возможностью добавления/удаления, редактирования и поиска
@@ -19,7 +17,7 @@
 
 #### Запуск json-server
 
-    json-server db.json -m ./node_modules/json-server-auth
+    json-server db.json -m ./node_modules/json-server-auth (необходимо для регистрации и логина)
 
 #### Запуск development сервера
 
@@ -35,7 +33,6 @@
   - store - хранилище проекта
   - fetching - запрос контактов из бд
   - querys - запросы для работы с данными
-- mock - моковые данные(тестовые логины и пароли)
 - routes
   - Contact
   - Login
