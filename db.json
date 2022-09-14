@@ -2,23 +2,15 @@
   "contacts": [
     {
       "id": 1,
-      "title": "json-serverr"
+      "title": "Сергей",
+      "tel": 213,
+      "address": "Москва"
     },
     {
       "id": 2,
-      "title": "reactasd"
-    },
-    {
-      "title": "bootstrap",
-      "id": 3
-    },
-    {
-      "title": "asd",
-      "id": 4
-    },
-    {
-      "id": 5,
-      "title": "Frontend"
+      "title": "Никита",
+      "tel": 548879613,
+      "address": "fasdft"
     }
   ],
   "users": [

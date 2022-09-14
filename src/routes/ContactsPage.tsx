@@ -43,8 +43,9 @@ const ContactsPage = () => {
         <Table striped bordered hover variant="dark">
           <thead>
             <tr>
-              <th>Id</th>
-              <th>Title</th>
+              <th>Имя</th>
+              <th>Телефон</th>
+              <th>Адрес</th>
               <th colSpan={2}>Действия</th>
             </tr>
           </thead>

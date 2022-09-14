@@ -33,7 +33,7 @@ const Navigation = () => {
             <>
               <Navbar.Collapse className="justify-content-center">
                 <Navbar.Text>
-                  <span>Signed in as: {username}</span>
+                  <span>Вы вошли как: {username}</span>
                 </Navbar.Text>
               </Navbar.Collapse>
               <Button variant="danger" onClick={LogOut}>
