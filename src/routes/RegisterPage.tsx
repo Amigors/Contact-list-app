@@ -20,9 +20,8 @@ const RegisterPage = () => {
   const SubmitForm: SubmitHandler<TRegistration> = async (data: TRegistration) => {
     try {
       const response = await axios.post(`http://localhost:3000/users`, data);
-      console.log('username', data.username);
       toast.success('Регистрация успешна');
-      navigate('/login');
+      navigate('/');
       dispatch(
         register({
           accessToken: response.data.access,
@@ -31,7 +30,6 @@ const RegisterPage = () => {
             email: data.email,
             id: response.data.id,
           },
-          isAuthenticated: Boolean(response.data.access),
         })
       );
     } catch (e) {
@@ -77,7 +75,7 @@ const RegisterPage = () => {
           Зарегистрироваться
         </Button>
       </Form>
-      <Link to="/login">У меня уже есть аккаунт</Link>
+      <Link to="/">У меня уже есть аккаунт</Link>
     </>
   );
 };

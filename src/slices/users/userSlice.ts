@@ -1,8 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-
-const ACCESS_KEY = 'dc-access'
-const USERNAME_KEY = 'dc-username'
-const EXPIRES_KEY = 'dc-expires'
+import { ACCESS_KEY, USERNAME_KEY, EXPIRES_KEY} from './constants'
 
 interface UserState {
   accessToken: string,
@@ -14,6 +11,7 @@ interface UserState {
   isAuthenticated: boolean;
 }
 
+type LoginResponse = Omit<UserState, 'isAuthenticated'>
 
 const initialState: UserState = {
     accessToken: '',
@@ -29,13 +27,13 @@ export const userSlice = createSlice({
   name: 'user',
   initialState,
   reducers: {
-    register: (state, action: PayloadAction<UserState>) => {
+    register: (state, action: PayloadAction<LoginResponse>) => {
       state.accessToken = action.payload.accessToken
       state.user.email = action.payload.user.email
       state.user.username = action.payload.user.username
       state.isAuthenticated = Boolean(action.payload.accessToken)
     },
-    loginSuccess: (state, action: PayloadAction<UserState>) => {
+    loginSuccess: (state, action: PayloadAction<LoginResponse>) => {
       state.accessToken = action.payload.accessToken
       state.user.email = action.payload.user.email
       state.user.username = action.payload.user.username

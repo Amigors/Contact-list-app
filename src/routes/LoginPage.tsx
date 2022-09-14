@@ -22,19 +22,8 @@ const LoginPage = () => {
     try {
       const result = await axios.post('http://localhost:3000/login', data);
       toast.success('Все ок, заходи');
-      console.log(result);
       navigate('/contacts');
-      dispatch(
-        loginSuccess({
-          accessToken: result.data.accessToken,
-          user: {
-            email: data.email,
-            username: result.data.username,
-            id: result.data.id,
-          },
-          isAuthenticated: Boolean(result.data.accessToken),
-        })
-      );
+      dispatch(loginSuccess(result.data));
     } catch (error) {
       toast.error('Неверные данные');
     }

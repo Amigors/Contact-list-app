@@ -13,7 +13,6 @@ import {store} from './app/store';
 
 import 'react-toastify/dist/ReactToastify.css';
 import './index.css';
-import App from './App';
 import RegisterPage from './routes/RegisterPage';
 import Navigation from './components/Navigation';
 
@@ -23,9 +22,8 @@ ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Navigation />}>
-            <Route index element={<App />} />
+            <Route index element={<LoginPage />} />
             <Route path="/registration" element={<RegisterPage />} />
-            <Route path="/login" element={<LoginPage />} />
             <Route path="contacts" element={<ProtectedRoute authenticationPath="/login" outlet={<ContactsPage />} />} />
             <Route path="*" element={<NotFound />} />
           </Route>

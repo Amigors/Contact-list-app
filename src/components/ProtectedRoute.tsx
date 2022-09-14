@@ -1,4 +1,5 @@
 import {Navigate} from 'react-router-dom';
+import {ACCESS_KEY} from '../slices/users/constants';
 
 type TProtectedRouteProps = {
   authenticationPath: string;
@@ -6,7 +7,7 @@ type TProtectedRouteProps = {
 };
 
 export default function ProtectedRoute({authenticationPath, outlet}: TProtectedRouteProps) {
-  const auth = localStorage.getItem('dc-access');
+  const auth = localStorage.getItem(ACCESS_KEY);
   if (auth) {
     return outlet;
   } else {
